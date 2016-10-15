@@ -1,9 +1,11 @@
 <?php
+
 namespace Worktime;
+
 /**
- * A class for shift time
+ * A class for shift time.
  */
-class ShiftTime extends \DateTime 
+class ShiftTime extends \DateTime
 {
     /**
      * Constructor. Rounds time up to \TIME_STEP minutes.
@@ -13,16 +15,16 @@ class ShiftTime extends \DateTime
     public function __construct($time)
     {
         parent::__construct($time);
-        
+
         // Rounding...
-        $diff = $this->format("i") % \TIME_STEP;
+        $diff = $this->format('i') % \TIME_STEP;
         if ($diff) {
             $this->sub(\DateInterval::createFromDateString("{$diff} min"));
         }
     }
-    
+
     /**
-     * Turn the object to a string
+     * Turn the object to a string.
      *
      * return string
      */
@@ -30,5 +32,4 @@ class ShiftTime extends \DateTime
     {
         return $this->format('H:i');
     }
-    
 }

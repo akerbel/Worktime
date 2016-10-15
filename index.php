@@ -1,9 +1,10 @@
 <?php
+
 ini_set('display_errors', 'On');
 ini_set('error_reporting', E_ALL);
 
-include_once "worktime.php";
-include_once "src/autoload.php";
+include_once 'worktime.php';
+include_once 'src/autoload.php';
 
 define('NIGHTTIME_START', $SETTINGS_nighttime_start);
 define('NIGHTTIME_END', $SETTINGS_nighttime_end);
@@ -24,8 +25,7 @@ echo '
     </tr>
 ';
 
-foreach ($EMPLOYEES as $id=>$employee){
-    
+foreach ($EMPLOYEES as $id => $employee) {
     $shift = new Shift(new ShiftTime($employee['shift_start']), new ShiftTime($employee['shift_end']));
 
     echo "
