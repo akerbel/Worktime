@@ -19,7 +19,7 @@ class ShiftTime extends \DateTime
         // Rounding...
         $diff = $this->format('i') % \TIME_STEP;
         if ($diff) {
-            $this->sub(\DateInterval::createFromDateString("{$diff} min"));
+            $this->sub(\DateInterval::createFromDateString("$diff min"));
         }
     }
 

@@ -83,14 +83,14 @@ class Shift
         // Create a timestep as \DateInterval for using in \DatePeriod.
         $timeStep = self::minutesToInterval(\TIME_STEP);
 
-        // Create worktime as array
-        // If worktime doesn`t pass a midnight
+        // Create worktime as an array
+        // If worktime doesn`t pass a midnight then...
         if (!$this->start->diff($this->end)->invert) {
             foreach (new \DatePeriod($this->start, $timeStep, $this->end) as $date) {
                 $this->workshift[] = $date->format('H:i');
             }
 
-        // If worktime does pass a midnight, then we have 2 periods insted 1 - before midnight and after midnight
+        // If worktime does pass a midnight then we have 2 periods instead 1 - before midnight and after midnight
         } else {
             foreach (new \DatePeriod(new ShiftTime('00:00'), $timeStep, $this->end) as $date) {
                 $this->workshift[] = $date->format('H:i');
@@ -103,7 +103,7 @@ class Shift
         $nighttimeStart = new ShiftTime(\NIGHTTIME_START);
         $nighttimeEnd = new ShiftTime(\NIGHTTIME_END);
 
-        // Create dayshift as array
+        // Create daytime as an array
         foreach (new \DatePeriod($nighttimeEnd, $timeStep, $nighttimeStart) as $date) {
             $this->dayshift[] = $date->format('H:i');
         }
@@ -120,7 +120,7 @@ class Shift
     }
 
     /**
-     * Get nighttime work.
+     * Get nighttime of the shift.
      *
      * @return \DateInterval
      */
@@ -130,7 +130,7 @@ class Shift
     }
 
     /**
-     * Get daytime work.
+     * Get daytime of the shift.
      *
      * @return \DateInterval
      */

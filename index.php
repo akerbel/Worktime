@@ -10,11 +10,14 @@ define('NIGHTTIME_START', $SETTINGS_nighttime_start);
 define('NIGHTTIME_END', $SETTINGS_nighttime_end);
 define('TIME_STEP', 15);
 
+/* PHP7 code
+use Worktime\{Shift, ShiftTime};
+*/
 use Worktime\Shift;
 use Worktime\ShiftTime;
 
-echo '<table border="1px">';
-echo '
+echo '<table border="1px">
+
     <tr>
         <th>ID</th>
         <th>Name</th>
